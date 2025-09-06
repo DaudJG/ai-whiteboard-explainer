@@ -4,6 +4,7 @@ using the Gemini API and the prompt templates in prompts.py.
 """
 
 import os
+import sys
 from dotenv import load_dotenv
 from google import genai
 from PIL import Image
@@ -49,7 +50,13 @@ def generate_explainer(concept: str):
         print("No image found in response.")
 
 def main():
-    generate_explainer("eigenvectors")
+    if len(sys.argv) < 2:
+        print("Usage: python generate_from_prompt.py <concept>")
+        print(f"Available concepts: {', '.join(PROMPTS.keys())}")
+        sys.exit(1)
+
+    concept = sys.argv[1]
+    generate_explainer(concept)
 
 if __name__ == "__main__":
     load_dotenv()
