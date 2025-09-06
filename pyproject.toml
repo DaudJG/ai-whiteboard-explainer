@@ -1,0 +1,11 @@
+[project]
+name = "ai-whiteboard-explainer"
+version = "0.1.0"
+dependencies = [
+  "httpx",
+  "python-dotenv",
+  "pydantic",
+  "rich",
+  "pillow",
+  "google-genai"
+]
