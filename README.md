@@ -118,4 +118,12 @@ python .\test_env.py
 > uv pip sync .\uv.lock
 > ```
 
+## Notes
+
+- `.env` is ignored by Git — never commit your API key.  
+- `outputs/` holds generated images; it’s ignored by Git.  
+- Commit history is structured to show the *learning journey*: reset → sanity check → failing attempt → fix → error handling.  
+- **Error handling:** The code uses a broad `except Exception` block to catch any API issues (timeouts, invalid key, etc.).  
+  In a production setting, you’d catch specific exceptions from `google.genai.errors` (e.g. `ClientError`, `APIError`) to handle retries, auth errors, or server issues separately.
+
 ---
