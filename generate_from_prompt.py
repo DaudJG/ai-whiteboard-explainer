@@ -56,6 +56,13 @@ def main():
         sys.exit(1)
 
     concept = sys.argv[1]
+
+    if concept not in PROMPTS:
+        print(f"Concept '{concept} not found.")
+        print(f"Available concepts: {', '.join(PROMPTS.keys())}")
+        sys.exit(1)
+
+
     generate_explainer(concept)
 
 if __name__ == "__main__":
