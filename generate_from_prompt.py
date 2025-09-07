@@ -13,9 +13,6 @@ from io import BytesIO
 from prompts import PROMPTS
 
 def generate_explainer(concept: str):
-    if concept not in PROMPTS:
-        raise ValueError(f"Concept '{concept}' not found in PROMPTS.")
-
     prompt = PROMPTS[concept]
     client = genai.Client()
 
