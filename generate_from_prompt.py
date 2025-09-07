@@ -15,11 +15,16 @@ from prompts import PROMPTS
 def generate_explainer(concept: str):
     prompt = PROMPTS[concept]
     client = genai.Client()
-
-    response = client.models.generate_content(
-        model="gemini-2.5-flash-image-preview",
+    
+    try:
+        response = client.models.generate_content(
+        model="notreal-gemini",
         contents=prompt,
     )
+    except Exception as e:
+        print(f"API call failed: {e}")
+        return
+    
 
     os.makedirs("outputs", exist_ok=True)
 
